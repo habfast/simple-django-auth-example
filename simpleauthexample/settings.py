@@ -113,7 +113,7 @@ TEMPLATE_DIRS = (
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    # 'simpleauthexample.authentication.ForceAuthBackend',
+    'simpleauthexample.authentication.ForceAuthBackend',
 ]
 
 INSTALLED_APPS = (

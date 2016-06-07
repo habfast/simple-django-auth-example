@@ -12,7 +12,7 @@ urlpatterns = patterns(
     url(r'^login/', views.loginview),
     url(r'^auth/', views.auth_and_login),
     url(r'^signup/', views.sign_up_in),
-    # url(r'^impersonate/(?P<user_id>[0-9]+)', 'simpleauthexample.views.impersonate'),
+    url(r'^impersonate/(?P<user_id>[0-9]+)', views.impersonate),
     url(r'^$', views.secured),
     url(r'^admin/', admin.site.urls),
 )
