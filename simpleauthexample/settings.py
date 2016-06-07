@@ -1,8 +1,6 @@
 # Django settings for simpleauthexample project.
 import os
 
-import raven
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -115,7 +113,7 @@ TEMPLATE_DIRS = (
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'simpleauthexample.authentication.ForceAuthBackend',
+    # 'simpleauthexample.authentication.ForceAuthBackend',
 ]
 
 INSTALLED_APPS = (
@@ -129,7 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'raven.contrib.django.raven_compat',
+    # 'raven.contrib.django.raven_compat',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -160,8 +158,3 @@ LOGGING = {
         },
     }
 }
-
-RAVEN_CONFIG = {
-    'dsn': 'http://555f60bcbc55442d83115943a68f8a3c:51983ab07db04eeb912b1a08a69c7633@sentry.example.com/2',
-}
-
