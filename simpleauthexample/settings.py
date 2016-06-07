@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    # 'raven.contrib.django.raven_compat',
+    'raven.contrib.django.raven_compat',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -158,3 +158,8 @@ LOGGING = {
         },
     }
 }
+
+RAVEN_CONFIG = {
+    'dsn': 'http://d7e3d73ef179416da5d3abd0f4142fbe:a881929b9a7040b8afcca87befcdcb82@sentry.example.com/2',
+}
+
