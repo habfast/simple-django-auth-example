@@ -1,0 +1,49 @@
+version: '2'
+services:
+
+  db:
+    image: postgres
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      VIRTUAL_HOST: webmardi.example.com
+      VIRTUAL_PORT: 8000
+      DATABASE_HOST: db
+
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  redis:
+    image: redis
+
+  sentry:
+    image: slafs/sentry
+    volumes:
+      - ./sentry:/data
+    expose:
+      - 9000
+    depends_on:
+      - db
+      - redis
+    environment:
+      VIRTUAL_HOST: sentry.example.com
+      VIRTUAL_PORT: 9000
+      SENTRY_URL_PREFIX: http://sentry.example.com
+      SECRET_KEY: yolo
+      SENTRY_ADMIN_USERNAME: paul
+      SENTRY_ADMIN_PASSWORD: 1234
+      SENTRY_ADMIN_EMAIL: paul@thecakeisalive.com
+      SENTRY_INITIAL_TEAM: webmardi
+      DATABASE_URL: postgres://postgres:@db/sentry
+      SENTRY_REDIS_HOST: redis
+      SENTRY_USE_REDIS_BUFFERS: "True"
+
